@@ -22,10 +22,10 @@ func main() {
 	zipped := zip(a, b)
 
 	// Add the pairs together
-	sums := make([]int, len(zipped))
+	diffs := make([]int, len(zipped))
 	for i, pair := range zipped {
-		sums[i] = absInt(pair[0] - pair[1])
-		total = total + sums[i]
+		diffs[i] = absInt(pair[0] - pair[1])
+		total = total + diffs[i]
 	}
 	fmt.Println(total)
 	// -------------------------------------
@@ -88,7 +88,7 @@ func readIn(filename string) ([]int, []int) {
 	for scanner.Scan() {
 		line := scanner.Text()
 		columns := strings.Fields(line) // [xxx, yyy]
-		
+
 		// Check if the line has at least two columns
 		if len(columns) >= 2 {
 			// Convert to integer and append to the respective slice
