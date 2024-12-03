@@ -10,9 +10,10 @@ import (
 )
 
 func main() {
+	// PART 1 BELOW
 	total := 0
 	a, b := readIn("test.txt")
-	
+
 	// Sort the slices
 	sort.Ints(a)
 	sort.Ints(b)
@@ -27,6 +28,26 @@ func main() {
 		total = total + sums[i]
 	}
 	fmt.Println(total)
+	// -------------------------------------
+
+	// PART 2 BELOW
+	// Create a slice to store the simscores
+	simScore := make([]int, len(a))
+	totalSimScore := 0
+	// Count occurrences of each value in col1 within col2
+	for i, valueA := range a {
+		count := 0
+		for _, valueB := range b {
+			if valueA == valueB {
+				count++
+			}
+		}
+		simScore[i] = count * valueA
+	}
+	for _, score := range simScore {
+		totalSimScore += score
+	}
+	fmt.Println(totalSimScore)
 }
 
 func zip(a, b []int) [][2]int {
