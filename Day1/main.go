@@ -51,12 +51,16 @@ func main() {
 }
 
 func zip(a, b []int) [][2]int {
+	// Find the minimum length of the two slices to ensure zip wont exceed a bound
 	minLength := len(a)
 	if len(b) < minLength {
 		minLength = len(b)
 	}
 
+	// Create a slice to store the result
 	result := make([][2]int, minLength)
+
+	// Proceed by each index, take the value at both a and b and append it to the result slice
 	for i := 0; i < minLength; i++ {
 		result[i] = [2]int{a[i], b[i]}
 	}
@@ -83,9 +87,11 @@ func readIn(filename string) ([]int, []int) {
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		line := scanner.Text()
-		columns := strings.Fields(line)
-
+		columns := strings.Fields(line) // [xxx, yyy]
+		
+		// Check if the line has at least two columns
 		if len(columns) >= 2 {
+			// Convert to integer and append to the respective slice
 			val1, err1 := strconv.Atoi(columns[0])
 			if err1 == nil {
 				col1 = append(col1, val1)
